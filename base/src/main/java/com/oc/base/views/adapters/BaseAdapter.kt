@@ -15,10 +15,10 @@ abstract class BaseAdapter<M, V : ViewBinding> : RecyclerView.Adapter<BaseViewHo
 
     fun getListData(): List<M> = _listData
 
-    private var _onSelectedItemListener: OnSelectedItemListener<M>? = null
+    protected var onSelectedItemListener: OnSelectedItemListener<M>? = null
 
     open fun setListener(onSelectedItemListener: OnSelectedItemListener<M>) {
-        this._onSelectedItemListener = onSelectedItemListener
+        this.onSelectedItemListener = onSelectedItemListener
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -88,7 +88,7 @@ abstract class BaseAdapter<M, V : ViewBinding> : RecyclerView.Adapter<BaseViewHo
         val holder = getViewHolder(parent, viewType)
         holder.setListener(object : OnSelectedItemListener<M> {
             override fun onClick(item: M) {
-                _onSelectedItemListener?.onClick(item)
+                onSelectedItemListener?.onClick(item)
             }
         })
         return holder

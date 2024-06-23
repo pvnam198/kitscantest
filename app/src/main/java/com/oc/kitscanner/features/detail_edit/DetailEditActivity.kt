@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.oc.base.views.BaseActivity
 import com.oc.domain.models.Document
 import com.oc.kitscanner.databinding.ActivityDetailEditBinding
+import com.oc.kitscanner.features.exports.ExportDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,7 +41,7 @@ class DetailEditActivity : BaseActivity<ActivityDetailEditBinding>() {
             backToPrevious()
         }
         binding.btnExport.setOnClickListener {
-
+            ExportDialog.getInstance(viewModel.document).show(supportFragmentManager, ExportDialog.TAG)
         }
     }
 

@@ -4,20 +4,15 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 
 abstract class AdapterTypeConfig {
-    protected abstract val holderMapper: Map<Int, BaseMultipleTypeViewHolder>
-    protected abstract val typeMapper: Map<Class<*>, Int>
+    protected abstract val typeHolderMapper: Map<Int, BaseMultipleTypeViewHolder>
 
     fun getViewHolder(viewType: Int): BaseMultipleTypeViewHolder {
-        val holder = holderMapper[viewType]
+        val holder = typeHolderMapper[viewType]
             ?: throw IllegalArgumentException("No ViewHolder found for viewType: $viewType")
         return holder
     }
 
-    fun getType(className: Class<*>): Int {
-        val type = typeMapper[className]
-            ?: throw IllegalArgumentException("No viewType found for class: $className")
-        return type
-    }
+    abstract fun getItemViewType(currentItem: Any): Int
 }
 
 abstract class BaseMultipleTypeViewHolder(binding: ViewBinding) :
@@ -36,7 +31,7 @@ abstract class BaseMultipleTypeAdapter : BaseAdapter<Any, ViewBinding>() {
     abstract fun getAdapterTypeConfig(parent: ViewGroup, viewType: Int): AdapterTypeConfig
 
     override fun getItemViewType(position: Int): Int {
-        return adapterTypeConfig.getType(getListData()[position]::class.java)
+        return adapterTypeConfig.getItemViewType(getListData()[position])
     }
 
     override fun getViewHolder(

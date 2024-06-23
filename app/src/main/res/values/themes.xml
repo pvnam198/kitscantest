@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.KitScanner" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/c6</item>
+    </style>
+
+    <style name="Theme.KitScanner" parent="Base.Theme.KitScanner" />
+
+    <style name="ImageButtonStyle.KitScanner" parent="Theme.KitScanner">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="tint">@color/c3</item>
+        <item name="background">?selectableItemBackground</item>
+    </style>
+
+</resources>

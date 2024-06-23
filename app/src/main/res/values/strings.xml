@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">KitScanner</string>
+    <string name="your_documents">Your documents</string>
+    <string name="search_document">Search Document</string>
+    <string name="scan_doc">Scan doc</string>
+    <string name="saving_documents">Saving documents…</string>
+    <string name="lock_this_document">Lock this document</string>
+    <string name="unlock_this_document">Unlock this document</string>
+</resources>
